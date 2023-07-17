@@ -14,7 +14,6 @@ function CourseCards() {
 		let filtered = coursesData.filter((course) =>
 			course.title.toLowerCase().includes(""),
 		);
-
 		if (sortOption === "lowToHigh") {
 			filtered = filtered.sort((a, b) => a.price - b.price);
 		} else if (sortOption === "highToLow") {
@@ -26,9 +25,9 @@ function CourseCards() {
 	}
 
 	return (
-		<div>
-			<div>
-				<label htmlFor='sortOption'>Sort by:</label>
+		<div className='main'>
+			<div className='label'>
+				<label htmlFor='sortOption'>Sort by : </label>
 				<select
 					id='sortOption'
 					value={sortOption}
@@ -42,19 +41,26 @@ function CourseCards() {
 			<div className='courseContainer'>
 				{filteredCourses.map((course) => (
 					<div className='courseCard' key={course.title}>
-						<div className='image'>
-							<img src={course.image} alt='logo' />
+						<img src={course.image} alt='logo' />
+
+						<div className='details'>
+							<h3>Course Title : {course.title}</h3>
+							<p>{course.description}</p>
+							<div className='details'>
+								<p className='author'>
+									Author: {course.author}
+								</p>
+								<div className='courseDetails'>
+									<p>
+										Rating: {course.rating}{" "}
+										<i class='fa-solid fa-star'></i>
+									</p>
+									<p>Hours: {course.hours}</p>
+									<p>Lectures: {course.lectures}</p>
+								</div>
+							</div>
 						</div>
-						<h3>{course.title}</h3>
-						<p>{course.description}</p>
-						<p>Instructor: {course.instructor}</p>
-						<p>
-							Rating: {course.rating}{" "}
-							<i class='fa-solid fa-star'></i>
-						</p>
-						<p>Hours: {course.hours}</p>
-						<p>Lectures: {course.lectures}</p>
-						<p>Price: {course.price}</p>
+						<p className='price'>Price: ₹{course.price}</p>
 					</div>
 				))}
 			</div>
