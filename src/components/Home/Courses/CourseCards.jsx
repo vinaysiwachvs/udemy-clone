@@ -29,10 +29,13 @@ function CourseCards() {
 			<div className='label'>
 				<label htmlFor='sortOption'>Sort by : </label>
 				<select
+					className='select'
 					id='sortOption'
 					value={sortOption}
 					onChange={(e) => setSortOption(e.target.value)}>
-					<option value='relevance'>Relevance</option>
+					<option className='option' value='relevance'>
+						Relevance
+					</option>
 					<option value='lowToHigh'>Price: Low to High</option>
 					<option value='highToLow'>Price: High to Low</option>
 					<option value='rating'>Highest Rated</option>
